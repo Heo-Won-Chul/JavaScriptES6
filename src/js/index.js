@@ -127,6 +127,31 @@ console.log(new User().open());
 
 var sleep = msec => new Promise((resolve, reject) => setTimeout(resolve, msec));
 
-sleep(1000).then( _ => console.log('wake!'));
+sleep(1000).then( () => console.log('wake!'));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end promise
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start promise ajax
+
+const getAjaxPromise = url => new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "json";
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState == 4) {
+            if(xhr.status == 200) {
+                resolve(xhr.response);
+            } else {
+                reject(xhr.status);
+            }
+        }
+    };
+    xhr.send();
+});
+
+getAjaxPromise("https://api.github.com/users/Heo-Won-Chul/repos")
+.then(response => {
+    console.log(response);
+});
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end promise ajax
