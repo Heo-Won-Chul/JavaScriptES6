@@ -74,7 +74,7 @@ console.log(upperProgrammingLanguages);
 let name = 'Heo Won Chul';
 let birthYear  = 1992;
 
-var calcAge = year => new Date().getFullYear().valueOf() - birthYear
+var calcAge = year => new Date().getFullYear().valueOf() - birthYear;
 
 console.log(`My name is ${name}. I am ${calcAge(birthYear)} years old.`);
 
@@ -91,7 +91,7 @@ console.log(`${name}, `.repeat(3));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start rest parameter
 
-var addNumber = (... numbers) => numbers.reduce((sum, number) => {return sum + number; }, 0);
+var addNumber = (... numbers) => numbers.reduce((sum, number) => sum + number, 0);
 
 console.log(addNumber(1,2,3,4));
 
@@ -122,3 +122,11 @@ console.log(new User('wonchul').open());
 console.log(new User().open());
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end class
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start promise
+
+var sleep = msec => new Promise((resolve, reject) => setTimeout(resolve, msec));
+
+sleep(1000).then( _ => console.log('wake!'));
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end promise
