@@ -86,7 +86,25 @@ console.log(name.startsWith('Heo'));
 console.log(name.includes(' '));
 console.log(name.repeat(2));
 console.log(`${name}, `.repeat(3));
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end string
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start rest parameter
+
+var addNumber = (... numbers) => numbers.reduce((sum, number) => {return sum + number; }, 0);
+
+console.log(addNumber(1,2,3,4));
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end rest parameter
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start spread operator
+
+const defaultColors = ['red', 'green'];
+const userFavoriteColors =['yellow', 'orange'];
+
+console.log([ ...defaultColors, ...userFavoriteColors ]);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end spread operator
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start class
 
