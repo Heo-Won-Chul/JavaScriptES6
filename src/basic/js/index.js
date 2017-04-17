@@ -37,21 +37,45 @@ areaTest();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end field
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start for
+
+const arr = ['a', 'b', 'c'];
+
+arr.forEach(value => {
+    // can not use the break statement.
+    console.log(value);
+});
+
+for(let i in arr) {
+    console.log(arr[i]);
+
+    if(i == 1) {
+        break;
+    }
+}
+
+for(let i of arr) {
+    break;
+    console.log(i);
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end for
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start arrow function
 
-var pow = num => num * num;
-var multiply = (x, y) => x * y;
+const pow = num => num * num;
+const multiply = (x, y) => x * y;
 
 console.log(pow(3));
 console.log(multiply(2, 3));
 
-var programmingLanguages = [
+const programmingLanguages = [
     "java",
     "javascript",
     "go"
 ];
 
-var upperProgrammingLanguages = programmingLanguages.map(programming => programming.toLocaleUpperCase());
+const upperProgrammingLanguages = programmingLanguages.map(programming => programming.toLocaleUpperCase());
 
 console.log(programmingLanguages);
 console.log(upperProgrammingLanguages);
@@ -74,7 +98,7 @@ console.log(upperProgrammingLanguages);
 let name = 'Heo Won Chul';
 let birthYear  = 1992;
 
-var calcAge = year => new Date().getFullYear().valueOf() - birthYear;
+const calcAge = year => new Date().getFullYear().valueOf() - birthYear;
 
 console.log(`My name is ${name}. I am ${calcAge(birthYear)} years old.`);
 
@@ -91,7 +115,7 @@ console.log(`${name}, `.repeat(3));
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start rest parameter
 
-var addNumber = (... numbers) => numbers.reduce((sum, number) => sum + number, 0);
+const addNumber = (... numbers) => numbers.reduce((sum, number) => sum + number, 0);
 
 console.log(addNumber(1,2,3,4));
 
@@ -116,16 +140,21 @@ class User {
     open() {
         return 'Hello, ' + this._name;
     }
+
+    static service() {
+        console.log(`User name is ${name}.`)
+    }
 }
 
 console.log(new User('wonchul').open());
 console.log(new User().open());
+User.service();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end class
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start promise
 
-var sleep = msec => new Promise((resolve, reject) => setTimeout(resolve, msec));
+const sleep = msec => new Promise((resolve, reject) => setTimeout(resolve, msec));
 
 sleep(1000).then( () => console.log('wake!'));
 
@@ -155,3 +184,49 @@ getAjaxPromise("https://api.github.com/users/Heo-Won-Chul/repos")
 });
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end promise ajax
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start promise race
+
+const delay100 = new Promise(resolve => {
+    const delay = 100;
+
+    setTimeout(() => {
+        console.log(delay);
+        resolve(delay);
+    }, delay);
+});
+
+const delay200 = new Promise(resolve => {
+    const delay = 200;
+
+    setTimeout(() => {
+        console.log(delay);
+        resolve(delay);
+    }, delay);
+});
+
+
+const delay300 = new Promise(resolve => {
+    const delay = 300;
+
+    setTimeout(() => {
+        console.log(delay);
+        resolve(delay);
+    }, delay);
+});
+
+Promise.race([
+    delay200,
+    delay300,
+    delay100
+]).then(result => {
+    console.log(`result is ${result}`);
+});
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end promise race
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start import & export
+
+// import & export source
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end import & export
