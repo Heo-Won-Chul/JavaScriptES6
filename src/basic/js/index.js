@@ -230,3 +230,30 @@ Promise.race([
 // import & export source
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end import & export
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start generator
+
+function* hello(name) {
+    yield `Hello, ${name}!`;
+    yield 'My name is Heo Won Chul';
+
+    if (name === 'Heo Won Chul') {
+        yield 'You are Admin';
+    } else {
+        yield 'You are User';
+    }
+}
+
+const es6Hello = hello('ES6');
+console.log(es6Hello.next());
+console.log(es6Hello.next());
+console.log(es6Hello.next());
+console.log(es6Hello.next());
+
+const hwcHello = hello('Heo Won Chul');
+console.log(hwcHello.next());
+console.log(hwcHello.next());
+console.log(hwcHello.next());
+console.log(hwcHello.next());
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end generator
